@@ -1,0 +1,54 @@
+<div class="container mt-4">
+
+  <h1>Text File Loader</h1>
+  <p>This web application allows you to load a .txt file from your desktop, display the contents on the screen, and then calculate the count of repeated words within the loaded file.</p>
+
+
+  <input  class="custom-file-input" type="file" class="form-control"
+          (change)="onFileSelected($event)" accept=".txt" required>
+
+
+  <div *ngIf="error" class="alert alert-danger mt-2">{{ error }}</div>
+
+
+  <div *ngIf="fileContent" class="mt-2">
+    <h3>File Content</h3>
+
+    <div class="container mt-4">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <div class="text-container">
+                <pre>{{ fileContent }}</pre>
+              </div>
+          </div>
+      </div>
+   </div>
+    <h3>Word Counts</h3>
+
+    <div class="container mt-4">
+      <div class="row">
+          <div class="col-md-6 offset-md-3">
+              <div class="text-container">
+
+                <table class="table table-striped" id="table">
+                  <thead>
+                      <tr>
+                          <th scope="col">Word</th>
+                          <th scope="col">Count</th>
+                      </tr>
+                  </thead>
+                  <tbody id="tbody">
+                    <tr *ngFor="let entry of wordCounts | keyvalue">
+                      <td>{{ entry.key }}</td>
+                      <td>{{ entry.value }}</td>
+                    </tr>
+                  </tbody>
+              </table>
+              </div>
+            </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
